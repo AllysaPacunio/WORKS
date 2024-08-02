@@ -1,0 +1,5 @@
+This code is for Web Scraping in Amazon website. It was designed to bypass the security of the site and uses Regular Expression to get the desired data. code with "# nltk.download('vader_lexicon')" must be commented out first to install nltk. comment again once done to display output
+
+This code works best in Google Colab.
+
+It was tested in 2023.
