@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Minute Lotto</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Krub:wght@700&family=Lato:wght@300&display=swap&family=Koulen&display=swap&family=Barlow+Condensed:wght@200;300&family=Koulen&display=swap');
+
+            * {
+                box-sizing: border-box;
+            }
+
+            main {
+                overflow: hidden;
+            }
+
+            body {
+                margin:0;
+                background-color: rgba(3, 27, 62, 1);
+                padding-bottom: 0;
+            }
+
+            header {
+                width: 100%;
+                display: flex;
+                background-color: rgba(0, 67, 130, 1);
+                box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+                border-radius: 0px 0px 0px 100px;
+                gap: 0px;
+                opacity: 0px;
+                padding-left: 7%;
+            }
+
+            .lotto-img {
+                /* float: right; */
+                position: absolute;
+                width: 60%; 
+                height: 57vw; 
+                margin-top: 6%;
+                right: 0%;
+                z-index: -1;
+                background-image: url("./831df4b5-fc9f-4386-bf61-ad8c6c1271b9-removebg-preview.png");
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+            }
+
+            .lato-light {
+                font-family: "Lato", sans-serif;
+                font-weight: 300;
+                font-style: normal;
+                padding-top: .2vh;
+                padding-bottom: .1vh;
+                color: rgba(224, 224, 224, 1);
+                font-size: .4vw;
+                font-weight: 300;
+                line-height: 10px;
+                letter-spacing: 1vw;
+            }
+
+            .minute-font {
+                font-family: "Krub", sans-serif;
+                font-size: 4vw;
+                font-weight: 700;
+                font-style: normal;
+                color: rgba(0, 50, 124, 1);
+                -webkit-text-stroke-width: .1vw;
+                -webkit-text-stroke-color: rgba(0, 255, 240, 1);
+            } 
+
+            .lotto-font {
+                font-family: "Krub", sans-serif;
+                font-size: 3vw;
+                font-weight: 700;
+                letter-spacing: 0.2em;
+                color: rgba(176, 138, 2, 1);
+                -webkit-text-stroke-width: .1vw;
+                -webkit-text-stroke-color: rgba(250, 255, 0, 1);
+                margin-top: 2%;
+                margin-left: -6vw;               
+            }
+            
+            .template {
+                width:60%;
+            }
+
+            .template2 {
+                width:40%;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+            }
+
+            .center {
+                display: flex;
+                justify-content: center;
+            }
+
+            .center-gameName {
+                display: flex; 
+                justify-content:center;
+                margin-top: 4%;
+                margin-bottom: 5%;
+            }
+
+            .outside-circle-yellow {
+                display: flex;
+                justify-content: center;
+                border-radius: 50%;
+                width: 31%;
+                height: 33%;
+                background-color: rgba(46, 111, 171, 1);
+                border: 3px solid rgba(226, 187, 48, 1);
+                box-shadow: 0px 4px 40px 0px rgba(250, 255, 0, 0.5);
+                padding: 1% 1%;
+            }
+
+            .circle-game-name {
+                /*position: absolute;*/
+                /* width: 5.8%; */
+                /* width: 5.8%; */
+                width: 100%;
+                height: 8vw;
+                border-radius: 50%;
+                background-color: rgba(46, 111, 171, 1);
+                border: 1px solid rgba(0, 0, 0, 1);
+                box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.25) inset;
+                padding-top: 1%;
+                padding-left: 8%;
+            }
+
+            .number-text-white {
+                height: 100%;
+                font-family: "Koulen", sans-serif;
+                font-size: 3.3vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(255, 255, 255, 1); 
+                
+            }
+            
+            .six-text-white {
+                line-height: 100%;
+                font-family: "Koulen", sans-serif;
+                font-size: 7vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(255, 255, 255, 1); 
+            }
+
+            .slash-font {
+                line-height: 100%;
+                font-family: "Koulen", sans-serif;
+                font-size: 7vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(7, 11, 121, 1);
+            }
+
+            .slash-font-yellow {
+                line-height: 100%;
+                font-family: "Koulen", sans-serif;
+                font-size: 7vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(226, 187, 48, 1);
+            }
+
+            .slash-font-darkblue {
+                line-height: 100%;
+                font-family: "Koulen", sans-serif;
+                font-size: 7vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(0, 35, 86, 1);
+            }
+
+            .number-text {
+                height: 100%;
+                font-family: "Koulen", sans-serif;
+                font-size: 4vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(7, 11, 121, 1);
+            }
+
+            .number-text-yellow {
+                height: 100%;
+                font-family: "Koulen", sans-serif;
+                font-size: 4vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(226, 187, 48, 1);
+            }
+
+            .number-text-darkblue {
+                height: 100%;
+                font-family: "Koulen", sans-serif;
+                font-size: 4vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(0, 35, 86, 1);
+            }
+
+
+            .overlap_color{
+                width: 100%;
+                height: 2vw;
+                background-color: rgba(0, 45, 86, 1);
+            }
+
+            .drawed-balls {
+                display: flex;
+                justify-content: space-around;
+                width: 45vw;
+                height:20%;
+                margin-bottom: 1%;
+                /*background-color: red; */
+                /* bottom: 3%; */
+            }
+
+            .choosen-balls {
+                display: flex;
+                justify-content: space-around;
+                width: 32vw;
+                height:20%;
+                margin-bottom: 1%;
+            }
+
+            .smaller_balls {
+                width: 13%;
+                height: 100%;
+                border-radius: 50%;
+                background: rgba(226, 187, 48, 1);
+                box-shadow: 0px 4px 5px 0px rgba(250, 255, 0, 1) inset;
+                font-family: "Koulen", sans-serif;
+                font-size: 2vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(0, 0, 0, 1);
+
+            }
+
+            .smaller_balls2 {
+                width: 13%;
+                height: 100%;
+                border-radius: 50%;
+                background: rgba(226, 187, 48, 1);
+                box-shadow: 0px 4px 5px 0px rgba(250, 255, 0, 1) inset;
+                font-family: "Koulen", sans-serif;
+                font-size: 2vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(0, 0, 0, 1);
+            }
+
+            .text-font {
+                display: flex;
+                justify-content: center;
+                width:100%;
+                font-family: "Koulen", sans-serif;
+                font-size: 1.5vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(255, 255, 255, 1);
+            }
+
+            .prize-big-font {
+                display: flex;
+                justify-content: center;
+                font-family: "Koulen", sans-serif;
+                font-size: 3.2vw;
+                font-weight: 400;
+                font-style: normal;
+                line-height: 100%;
+                color: rgba(255, 199, 0, 1);
+                -webkit-text-stroke-width: .2vw;
+                -webkit-text-stroke-color: rgba(0, 0, 0, 0.45);
+                margin-top: 1%;
+            }
+
+            .time-template {
+                margin-top: 1.5%;
+                margin-bottom: 3%;
+                background-color: rgba(217, 217, 217, 0.7);
+                width: 35%;
+                border-radius: 20px;
+            }
+
+            .name-template {
+                margin-top: 1.5%;
+                margin-bottom: 1%;
+                text-align: center;
+                background: rgba(226, 187, 48, 1);
+                box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 1);
+                width: 40%;
+                border-radius: 20px;
+                font-family: "Koulen", sans-serif;
+                font-size: 2vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(0, 0, 0, 1);
+            }
+
+            #date-medium-font {
+                font-family: "Koulen", sans-serif;
+                font-size: 2.5vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(255, 255, 255, 1);
+                line-height: 140%;
+            }
+
+            .player {
+                width: 100%;
+                height: 3.4vw;
+                padding: 8px 8px;
+                box-sizing: border-box;
+                font-family: "Koulen", sans-serif;
+                font-weight: 400;
+                font-style: normal;
+                font-size: 2vw;
+                border-radius: 20px;
+                margin-right: 1%;
+                margin-left: 3%;
+            }
+
+            .player:focus {
+                outline: none;
+                border: 3px solid rgba(226, 187, 48, 1);
+                box-shadow: 0px 4px 40px 0px rgba(250, 255, 0, 0.5);
+            }
+
+            .number-box {
+                width: 13%;
+                height: 3.5vw;
+                padding: 8px 8px;
+                box-sizing: border-box;
+                font-family: "Koulen", sans-serif;
+                font-weight: 400;
+                font-style: normal;
+                font-size: 2vw;
+                border-radius: 10px;
+                text-align: center;
+                margin-left: 2%;
+            }
+
+            .number-box input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            .number-box:focus {
+                outline: none;
+                border: 3px solid rgba(226, 187, 48, 1);
+                box-shadow: 0px 4px 40px 0px rgba(250, 255, 0, 0.5);
+            }
+            
+            .submit_button {
+                width: 7vw;
+                height: 3.5vw;
+                border-radius: 50px;
+                font-family: "Koulen", sans-serif;
+                font-weight: 400;
+                font-style: normal;
+                font-size: 2vw;
+                background-color: rgba(226, 187, 48, 1);
+                border: none;
+            }
+
+            .yellow-template {
+                display: flex;
+                justify-content: center;
+                width: 30%;
+                height: 5%;
+                right: 9%;
+                background-color: rgba(226, 187, 48, 1);
+                border-radius: 30px;
+                font-family: "Koulen", sans-serif;
+                font-size: 1.5vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(0, 50, 124, 1);
+                margin-top: 5%;
+                margin-bottom: 4%;
+            }
+
+            a {
+                color: rgba(0, 50, 124, 1);
+                text-decoration: none;
+            }
+
+            .yellow-template:hover, .submit_button:hover{
+                box-shadow: 0px 4px 50px 0px rgba(250, 255, 0, 0.5);
+            }
+
+            .previous-winner-template {
+                border-radius: 30px;
+                width: 70%;
+                height: 100%;
+                background: rgba(226, 187, 48, 1);
+                box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 1) inset;
+                padding: 2%;
+                font-family: "Koulen", sans-serif;
+                font-size: 2vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(0, 50, 124, 1);
+            }
+
+            .players_list-template {
+                border-radius: 30px;
+                width: 70%;
+                height: 100%;
+                background: rgba(0, 67, 130, 1);
+                box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.73) inset;
+                padding: 2%;
+                font-family: "Koulen", sans-serif;
+                font-size: 2vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(226, 187, 48, 1);
+                overflow: hidden;
+            }
+
+            .players_list-scroll {
+                border-radius: 30px;
+                width: 90%;
+                height: 80%;
+                padding: 2%;
+                overflow-y: scroll;
+            }
+
+            .players_list-scroll::-webkit-scrollbar {
+                width: 15px;
+            }
+
+            .players_list-scroll::-webkit-scrollbar-track-piece {
+                background-color: rgba(217, 217, 217, 0.2);
+                border-radius: 10px;
+            }
+
+          
+            .players_list-scroll::-webkit-scrollbar-thumb {
+                background-color: rgba(226, 187, 48, 1);
+                border-radius: 10px;
+            }
+
+            .winner_list-scroll {
+                border-radius: 30px;
+                width: 90%;
+                height: 64%;
+                padding: 1%;
+                overflow-y: scroll;
+            }
+
+            .winner_list-scroll::-webkit-scrollbar {
+                width: 15px;
+            }
+
+            .winner_list-scroll::-webkit-scrollbar-track-piece {
+                background-color: rgba(217, 217, 217, 0.2);
+                border-radius: 10px;
+            }
+
+          
+            .winner_list-scroll::-webkit-scrollbar-thumb {
+                background-color: rgba(0, 67, 130, 1);
+                border-radius: 10px;
+
+            }
+
+            .right-template1 {
+                width: 100%;
+                height: 23%;
+                margin-bottom: 3%;
+            }
+
+            .right-template2 {
+                width: 100%;
+                height: 56%;
+            }
+
+            .display {
+                display: flex;
+                width: 100%;
+                height: 55.5vw;
+            }
+
+            .full-width{
+                width: 100%;
+                display: flex;
+            }
+
+            .name-holder {
+                margin-left: 1%;
+                margin-right: 2%;
+                width:200%;
+                margin-top: 2%;
+                margin-bottom: 4.5%;
+            }
+
+            .margin-top {
+                margin-top: 2%;
+            }
+
+            .button-holder {
+                margin-top: 2%;
+            }
+
+            #players-box {
+                width:100%;
+                font-family: "Koulen", sans-serif;
+                font-size: 1.5vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(255, 255, 255, 1);
+                margin-left: 16%;
+            }
+
+            #players-box li {
+                list-style-type: none;
+            }
+
+            #winnerList {
+                width:100%;
+                font-family: "Koulen", sans-serif;
+                font-size: 1.5vw;
+                font-weight: 400;
+                font-style: normal;
+                margin-left: 16%;
+                color: black;
+            }
+
+            #winnerList li {
+                list-style-type: none;
+            }
+
+            @media screen and (min-width: 481px) and (max-width: 874px){
+                header {
+                    justify-content: center;
+                    padding-left: 0%;
+                }
+
+                .lotto-img {
+                    width: 60%; 
+                    height: 60vw; 
+                    background-image: url("./831df4b5-fc9f-4386-bf61-ad8c6c1271b9-removebg-preview.png");
+                }
+
+                .full-width{
+                    display:block;
+                }
+
+                .lato-light {
+                    font-size: .5vw;
+                    line-height: 8px;
+                    padding-top: 0vh;
+                    padding-bottom: 0vh;
+                }
+
+                .name-holder {
+                    width: 98%;
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 8%;
+                }
+
+                .player {
+                    width: 80%;
+                    height: 3.5vw;
+                    font-size: 2vw;
+                }
+
+                .margin-top {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    margin-left: 1%;
+                    margin-bottom: 6%;
+                }
+
+                .number-box {
+                    width: 11.5%;
+                    height: 3.5vw;
+                    font-size: 2vw;
+                }
+
+                .button-holder {
+                    width: 100%;
+                    height: 3.5vw;
+                    display: flex;
+                    justify-content: center;
+                    margin-bottom: 5%;
+                }
+
+                .submit_button {
+                    width: 15vw;
+                    height: 100%;
+                    border-radius: 50px;
+                    font-size: 2.5vw;
+                    line-height: 100%;
+                }
+
+                .right-template2 {
+                    height: 60%;
+                }
+
+                .previous-winner-template {
+                    border-radius: 15px;
+                    font-size: 2.5vw;
+                }
+
+                .players_list-template {
+                    border-radius: 20px;
+                    font-size: 2.5vw;
+                }
+
+                .text-font, #players-box, #winnerList {
+                    font-size: 2vw;
+                }
+
+                .display {
+                    height: 81vw;
+                }
+
+                .players_list-scroll::-webkit-scrollbar, .winner_list-scroll::-webkit-scrollbar{
+                    width: 8px;
+                }
+
+                .yellow-template {
+                    width: 50%;
+                    font-size: 2vw;
+                }
+            }
+            @media screen and (max-width: 480px){
+                header {
+                    justify-content: center;
+                    padding-left: 0%;
+                }
+
+                .lotto-img {
+                    width: 60%; 
+                    height: 60vw; 
+                    background-image: url("./lottery-balls-on-white-background-260nw-793001734-removebg-preview\ 1\ \(2\).png");
+                }
+
+                .minute-font {
+                    font-size: 5vw;
+                }
+
+                .lotto-font {
+                    font-size: 3.5vw;
+                    margin-top: 3%;
+                    margin-left: -7vw;
+                }
+
+                .display {
+                    display: block;
+                }
+
+                .template {
+                    width: 100%;
+                    height: 145vw;
+                }
+    
+                .template2 {
+                    width:100%;
+                    height: 75vw;
+                }
+
+                .circle-game-name {
+                    width: 100%;
+                    height: 17vw;
+                }
+
+                .outside-circle-yellow {
+                    width: 33%;
+                }
+
+                .six-text-white {
+                    font-size: 14vw;
+                    margin-right: 4%;
+                }
+
+                .slash-font-yellow{
+                    line-height: 152%;
+                    font-size: 12vw;
+                } 
+                
+                .number-text-yellow {
+                    font-size: 7.5vw;
+                }
+
+                .smaller_balls {
+                    font-size: 6vw;
+                }
+
+                .drawed-balls {
+                    width: 85vw;
+                }
+
+                .text-font, #players-box, #winnerList {
+                    font-size: 3vw;
+                    margin-bottom: 2%;
+                }
+
+                .prize-big-font {
+                    font-size: 7.5vw;
+                }
+
+                .time-template {
+                    width: 30%;
+                    margin-bottom: 5%;
+                }
+
+                #date-medium-font {
+                    font-size: 5vw;
+                }
+
+                .choosen-balls {
+                    width: 70vw;
+                }
+
+                .smaller_balls2 {
+                    font-size: 5vw;
+                }
+
+                .name-template {
+                    font-size: 4.5vw;
+                }
+
+                .full-width{
+                    display:block;
+                }
+
+                .name-holder {
+                    width: 98%;
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 8%;
+                }
+
+                .player {
+                    width: 80%;
+                    height: 7vw;
+                    font-size: 4vw;
+                }
+
+                .margin-top {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    margin-left: 1%;
+                    margin-bottom: 6%;
+                }
+
+                .number-box {
+                    width: 11.2%;
+                    height: 7vw;
+                    font-size: 4vw;
+                }
+
+                .button-holder {
+                    width: 100%;
+                    height: 7.2vw;
+                    display: flex;
+                    justify-content: center;
+                    margin-bottom: 5%;
+                }
+
+                .submit_button {
+                    width: 30vw;
+                    height: 100%;
+                    border-radius: 50px;
+                    font-size: 4vw;
+                    line-height: 100%;
+                }
+
+                .right-template1 {
+                    display: none;
+                }
+
+                .overlap_color {
+                    height: 25%;
+                }
+
+                .yellow-template {
+                    width: 50%;
+                    font-size: 4vw;
+                    margin-bottom: 6%;
+                }
+
+                .players_list-template {
+                    border-radius: 20px;
+                    width: 90%;
+                    height: 40vw;
+                    font-size: 4vw;
+                }
+
+                .players_list-scroll::-webkit-scrollbar, .winner_list-scroll::-webkit-scrollbar {
+                    width: 8px;
+                }
+
+                .players_list-scroll, .winner_list-scroll{
+                    width: 85%;
+                    padding-left: 2%;
+                }
+
+                #players {
+                    justify-content: left;
+                    margin-left: 16%;
+                }
+                
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="center">
+            <span class="lato-light">
+               FOR EDUCATIONAL PURPOSES ONLY
+            </span>
+        </div>
+
+        <header>
+
+            <a href="./game_options.html">
+                <span class="minute-font">
+                    MINUTE
+                </span>
+            </a>
+
+            <span class="lotto-font">
+                LOTTO
+            </span>
+            
+
+            <div class="lotto-img"></div>
+
+        </header>
+
+        <main>
+            <div class="display">
+                <div class="template">
+                     <div class="center-gameName">
+                         <div class="outside-circle-yellow">
+                             <div class="circle-game-name">  
+                                 <div class="center">
+                                     <span class="six-text-white">
+                                         6<span class="slash-font-yellow">/</span><span class="number-text-yellow">49</span>
+                                     </span>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+     
+                     <div class="center">
+                         <div class="drawed-balls">
+                             <div class="smaller_balls">
+                                 <div class="center">
+                                     <span class="winningNumber">
+                                         12
+                                     </span>
+                                 </div>
+                             </div>
+             
+                             <div class="smaller_balls">
+                                 <div class="center">
+                                     <span class="winningNumber">
+                                         45
+                                     </span>
+                                 </div>      
+                             </div>
+             
+                             <div class="smaller_balls">
+                                 <div class="center">
+                                     <span class="winningNumber">
+                                         06
+                                     </span>
+                                 </div>
+                             </div>
+             
+                             <div class="smaller_balls">
+                                 <div class="center">
+                                     <span class="winningNumber">
+                                         24
+                                     </span>
+                                 </div>
+                             </div>
+             
+                             <div class="smaller_balls">
+                                 <div class="center">
+                                     <span class="winningNumber">
+                                         34
+                                     </span>
+                                 </div>
+                             </div>
+             
+                             <div class="smaller_balls">
+                                 <div class="center">
+                                     <span class="winningNumber">
+                                         41
+                                     </span>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+     
+                 
+                     <span class="text-font">
+                         LAST DRAW
+                     </span>
+     
+     
+                     <div class="prize-big-font">
+                         ₱ 15,549,234.00
+                     </div>
+     
+                     <span class="text-font">
+                         JACKPOT
+                     </span>
+     
+                     
+                     <div class="center">
+                         <div class="time-template">
+                             <div class="center">
+                                 <span id="date-medium-font">
+                                     00:59
+                                 </span>
+                             </div>
+                         </div>
+                     </div>
+     
+                     <div class="center">
+                         <div class="choosen-balls">
+                             <div class="smaller_balls2">
+                                 <div class="center">
+                                     <span class="chosenNumber" id="one_numberValue">
+                                         0
+                                     </span>
+                                 </div>
+                             </div>
+             
+                             <div class="smaller_balls2">
+                                 <div class="center">
+                                     <span class="chosenNumber" id="two_numberValue">
+                                         0
+                                     </span>
+                                 </div>      
+                             </div>
+             
+                             <div class="smaller_balls2">
+                                 <div class="center">
+                                     <span class="chosenNumber" id="three_numberValue">
+                                        0
+                                     </span>
+                                 </div>
+                             </div>
+             
+                             <div class="smaller_balls2">
+                                 <div class="center">
+                                     <span class="chosenNumber" id="four_numberValue">
+                                         0
+                                     </span>
+                                 </div>
+                             </div>
+             
+                             <div class="smaller_balls2">
+                                 <div class="center">
+                                     <span class="chosenNumber"  id="five_numberValue">
+                                         0
+                                     </span>
+                                 </div>
+                             </div>
+             
+                             <div class="smaller_balls2">
+                                 <div class="center">
+                                     <span class="chosenNumber" id="six_numberValue">
+                                         0
+                                     </span>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+     
+                     <span class="text-font">
+                         YOUR PICK
+                     </span>
+     
+                     <div class="center">
+                         <div class="name-template" id="nameValue">
+                             NEW PLAYER     
+                         </div>
+                     </div>
+     
+                     <span class="text-font">
+                         USERNAME
+                     </span>
+
+                     <div class="full-width">
+                        <div class="name-holder">
+                            <input type="text" placeholder="USERNAME"  id="username" value="" class="player">
+                        </div>
+
+                        <div class="margin-top">
+                            <input type="text" placeholder="1" id="one" value="" class="number-box" required maxlength="2">
+                            <input type="text" placeholder="2" id="two" value="" class="number-box" required maxlength="2">
+                            <input type="text" placeholder="3" id="three" value="" class="number-box" required maxlength="2">
+                            <input type="text" placeholder="4" id="four" value="" class="number-box" required maxlength="2">
+                            <input type="text" placeholder="5" id="five" value="" class="number-box" required maxlength="2">
+                            <input type="text" placeholder="6" id="six" value="" class="number-box" style="margin-right: 2%;" required maxlength="2">
+                        </div>
+
+                        <div class="button-holder">
+                            <button value="6/49" onclick="ButtonFunction()" class="submit_button" id="submitButton">
+                                OK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+     
+                <div class="template2">
+                    <div class="center">
+                        <div class="yellow-template">
+                            <a href="./winnerlist2.html">
+                                <span>
+                                WINNERS HISTORY
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="right-template1">
+                        <div class="center" style="height: 100%;">
+                            <div class="previous-winner-template">
+                                <div class="center">
+                                    PREVIOUS WINNERS
+                                </div>
+    
+                                <div class="winner_list-scroll">
+                                    <div class="center">
+                                        <span id="winnerList">
+                                        </span> 
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div class="right-template2">
+                        <div class="center" style="height: 100%;">
+                            <div class="players_list-template">
+                                <div class="center">
+                                    PLAYERS:
+                                </div>
+
+                                <div class="players_list-scroll">
+                                    <div class="center">
+                                        <span id="players-box">
+                                            
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>                  
+                </div>
+            </div>
+        </main>
+        <div class="overlap_color"></div>
+    </body>
+
+    <script>
+        function ButtonFunction() {
+          var name = document.getElementById("username").value;
+          var one1 = document.getElementById("one").value;
+          var two = document.getElementById("two").value;
+          var three = document.getElementById("three").value;
+          var four = document.getElementById("four").value;
+          var five = document.getElementById("five").value;
+          var six = document.getElementById("six").value;
+
+          document.getElementById("nameValue").innerHTML = name;
+          document.getElementById("one_numberValue").innerHTML = one1;
+          document.getElementById("two_numberValue").innerHTML = two;
+          document.getElementById("three_numberValue").innerHTML = three;
+          document.getElementById("four_numberValue").innerHTML = four;
+          document.getElementById("five_numberValue").innerHTML = five;
+          document.getElementById("six_numberValue").innerHTML = six;
+
+          document.getElementById("submitButton").disabled = true;
+          var name = document.getElementById("username").value= "";
+          var one1 = document.getElementById("one").value= "";
+          var two = document.getElementById("two").value= "";
+          var three = document.getElementById("three").value= "";
+          var four = document.getElementById("four").value= "";
+          var five = document.getElementById("five").value= "";
+          var six = document.getElementById("six").value= "";
+        }
+    </script>
+</html>

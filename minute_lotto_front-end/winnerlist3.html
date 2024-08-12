@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Minute Lotto</title>
+        <!-- <link href="style.css" rel="stylesheet" type="text/css" /> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+         <style>
+            @import url('https://fonts.googleapis.com/css2?family=Krub:wght@700&family=Lato:wght@300&display=swap&family=Koulen&display=swap&family=Barlow+Condensed:wght@200;300&family=Koulen&display=swap');
+
+            * {
+                box-sizing: border-box;
+            }
+
+            main {
+                overflow: hidden;
+            }
+
+            body {
+                margin:0;
+                background-color: rgba(3, 27, 62, 1);
+                padding-bottom: 0;
+            }
+
+            header {
+                width: 100%;
+                display: flex;
+                background-color: rgba(0, 67, 130, 1);
+                box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+                border-radius: 0px 0px 0px 100px;
+                gap: 0px;
+                opacity: 0px;
+                padding-left: 7%;
+            }
+
+            .lato-light {
+                font-family: "Lato", sans-serif;
+                font-weight: 300;
+                font-style: normal;
+                padding-top: .2vh;
+                padding-bottom: .1vh;
+                color: rgba(224, 224, 224, 1);
+                font-size: .4vw;
+                font-weight: 300;
+                line-height: 10px;
+                letter-spacing: 1vw;
+            }
+
+            .minute-font {
+                font-family: "Krub", sans-serif;
+                font-size: 3.5vw;
+                font-weight: 700;
+                font-style: normal;
+                color: rgba(0, 50, 124, 1);
+                -webkit-text-stroke-width: .1vw;
+                -webkit-text-stroke-color: rgba(0, 255, 240, 1);
+            } 
+
+            .lotto-font {
+                font-family: "Krub", sans-serif;
+                font-size: 2.5vw;
+                font-weight: 700;
+                letter-spacing: 0.2em;
+                color: rgba(176, 138, 2, 1);
+                -webkit-text-stroke-width: .1vw;
+                -webkit-text-stroke-color: rgba(250, 255, 0, 1);
+                margin-top: 2%;
+                margin-left: -5vw;
+            }
+
+            .center {
+                display: flex;
+                justify-content: center;
+            }
+
+            .white-text {
+                display: flex;
+                justify-content: center;
+                width: 88%;
+                font-family: "Koulen", sans-serif;
+                font-size: 3vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(255, 255, 255, 1);
+                margin-left: 7%;
+                margin-top: 1%;
+                margin-bottom: 1.5%;
+                /* margin-right: 7%; */
+            }
+
+
+            .game-name {
+                /* position: absolute; */
+                font-family: "Koulen", sans-serif;
+                font-size: 48px;
+                font-weight: 400;
+                font-style: normal;
+                font-size: 3vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(1, 42, 80, 1);
+                /* top:17%; */
+                margin-left: 2%;
+                -webkit-text-stroke-width: .1vw;
+                -webkit-text-stroke-color: rgba(46, 111, 171, 1);
+                text-shadow: 0px 4px 200px 0px rgba(0, 0, 0, 1);
+            }
+
+            .boxes-template {
+                display: flex;
+                justify-content: space-around;
+                width: 100%;
+                height: 73vh;
+                padding-left: 1%;
+                padding-right: 1%;
+                flex-wrap: wrap;
+            }
+
+            .winners-list {
+                width: 90%;
+                height: 96%;
+                border-radius: 25px;
+                background-color: rgba(226, 187, 48, 1);
+                box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.73) inset;
+                padding-top: 7%;
+                padding-left: 10%;
+                padding-right: 10%;
+                overflow: hidden;
+            }
+
+            .digits-font {
+                font-family: "Koulen", sans-serif;
+                font-size: 2vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(0, 35, 86, 1);
+                line-height: 100%;
+            }
+
+            .prize-amount-font {
+                font-family: "Koulen", sans-serif;
+                font-size: 1.2vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(255, 0, 0, 1);
+                line-height: 100%;
+                margin-bottom: 15%;
+            }
+
+            .center_grid {
+                display: grid;
+                justify-content: center;
+            }
+
+            .full-width{
+                width: 25%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
+            .players_list-scroll {
+                border-radius: 30px;
+                width: 94%;
+                height: 83%;
+                margin-top: 0%;
+                overflow-y: scroll;
+            }
+
+            .players_list-scroll::-webkit-scrollbar {
+                width: 15px;
+            }
+
+            .players_list-scroll::-webkit-scrollbar-track-piece {
+                background-color: rgba(217, 217, 217, 0.2);
+                border-radius: 10px;
+            }
+
+          
+            .players_list-scroll::-webkit-scrollbar-thumb {
+                background-color: rgba(0, 67, 130, 1);
+                border-radius: 10px;
+
+            }
+
+            .players-box{
+                width:100%;
+                font-family: "Koulen", sans-serif;
+                font-size: 1.5vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(255, 255, 255, 1);
+                margin-left: 10%;
+            }
+
+            .players-box li {
+                list-style-type: none;
+            }
+
+
+            @media screen and (min-width: 481px) and (max-width: 1023px){
+                header {
+                    justify-content: center;
+                    padding-left: 0%;
+                }
+
+                .minute-font {
+                    font-size: 5.5vw;
+                }
+
+                .lotto-font {
+                    font-size: 3.8vw;
+                    margin-top: 3.2%;
+                }
+
+                .lato-light {
+                    font-size: .5vw;
+                    line-height: 8px;
+                    padding-bottom: 0;
+                }
+
+                .full-width{
+                    width: 50%;
+                }
+
+                a {
+                    text-decoration: none;
+                }
+
+                .boxes-template {
+                    height: 49vw;
+                }
+
+                .winners-list {
+                    width: 80%;
+                    border-radius: 20px;
+                    padding-top: 4%;
+                    padding-left: 5%;
+                    padding-right: 5%;
+                }
+
+                .digits-font {
+                    font-size: 3vw;
+                }
+
+                .prize-amount-font {
+                    font-size: 1.8vw;
+                    text-align: center;
+                }
+
+                .white-text {
+                    font-size: 4vw;
+                }
+
+                .players-box{
+                    font-size: 2.5vw;
+                }
+
+                .game-name {
+                    font-size: 4vw;
+                }
+
+                .players_list-scroll {
+                    padding-top: 2%;
+                    height: 82%;
+                }
+
+                .players_list-scroll::-webkit-scrollbar {
+                    width: 8px;
+                }
+
+            }
+
+            @media screen and (max-width: 480px){
+                header {
+                    justify-content: center;
+                    padding-left: 0%;
+                }
+
+                .minute-font {
+                    font-size: 6vw;
+                }
+
+                .lotto-font {
+                    font-size: 4.5vw;
+                    margin-top: 3.5%;
+                }
+
+                .boxes-template {
+                    display: block;
+                    height:76vw;
+                } 
+
+                .lato-light {
+                    font-size: 1vw;
+                    padding-bottom: 0vh;
+                }
+
+                .lato-light {
+                    font-size: .8vw;
+                    line-height: 6px;
+                    padding-top: 0;
+                }
+
+                .full-width{
+                    margin-bottom: 2%;
+                    width: 100%;
+                    height: 48.8%;
+                }
+
+                .winners-list {
+                    width: 74%;
+                    border-radius: 20px;
+                    padding-top: 4%;
+                    padding-left: 5%;
+                    padding-right: 5%;
+                }
+
+                .digits-font {
+                    font-size: 3.5vw;
+                }
+
+                .prize-amount-font {
+                    font-size: 2vw;
+                    text-align: center;
+                }
+
+                .white-text {
+                    font-size: 5vw;
+                }
+
+                .players-box{
+                    font-size: 3vw;
+                }
+
+                .game-name {
+                    font-size: 5vw;
+                }
+
+                .players_list-scroll {
+                    width: 94%;
+                    height: 70%;
+                    margin-top: 0;
+                }
+
+                .players_list-scroll::-webkit-scrollbar {
+                    width: 8px;
+                }
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="center">
+            <span class="lato-light">
+               FOR EDUCATIONAL PURPOSES ONLY
+            </span>
+        </div>
+
+        <header>
+            <a href="./game3-interface.html">
+                <span class="minute-font">
+                    MINUTE
+                </span>
+            </a>
+
+            <span class="lotto-font">
+                LOTTO
+            </span>
+        </header>
+
+
+        <main>
+            <span class="white-text">
+                WINNER LIST OF
+                <span class="game-name">
+                    6/42
+                </span> 
+            </span>
+
+            <div class="boxes-template">
+                <div class="full-width">
+                    <div class="winners-list">
+                        <div class="center_grid">
+                            <span class="digits-font">
+                                6 DIGITS
+                            </span>
+        
+                            <span class="prize-amount-font">
+                                JACKPOT PRIZE
+                            </span>
+                        </div>
+
+                        <div class="players_list-scroll">
+                            <div class="center">
+                                <span class="players-box" id="sixdigits">
+                                    
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="full-width">
+                    <div class="winners-list">
+                        <div class="center_grid">
+                            <span class="digits-font">
+                                5 DIGITS
+                            </span>
+        
+                            <span class="prize-amount-font">
+                                ₱ 3,000.00
+                            </span>
+                        </div>
+
+                        <div class="players_list-scroll">
+                            <div class="center">
+                                <span class="players-box" id="fivedigits">
+                                    
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="full-width">
+                    <div class="winners-list">
+                        <div class="center_grid">
+                            <span class="digits-font">
+                                4 DIGITS
+                            </span>
+        
+                            <span class="prize-amount-font">
+                                ₱ 2,000.00
+                            </span>
+                        </div>
+
+                        <div class="players_list-scroll">
+                            <div class="center">
+                                <span class="players-box" id="fourdigits">
+                                    
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="full-width">
+                    <div class="winners-list">
+                        <div class="center_grid">
+                            <span class="digits-font">
+                                3 DIGITS
+                            </span>
+        
+                            <span class="prize-amount-font">
+                                ₱ 1,000.00
+                            </span>
+                        </div>
+
+                        <div class="players_list-scroll">
+                            <div class="center">
+                                <span class="players-box" id="threedigits">
+                                    
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </main>
+    </body>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+        const socket = io();
+        var three = document.querySelector("#threedigits");
+        var four = document.querySelector("#fourdigits");
+        var five = document.querySelector("#fivedigits");
+        var six = document.querySelector("#sixdigits");
+        var winnerField = document.querySelectorAll(".players-box");
+        var game = "6/42";
+
+        socket.emit("gameAllWinners", game);
+
+        socket.on("allWinners", function(winnerNames, type) {
+            for (let i = 0; i < winnerField.length; i++) {
+                winnerField[i].textContent = '';
+            }
+            for (let i = 0; i < winnerNames.length; i++) {
+                var addedWinner = document.createElement("li");
+                if (type == game) {
+                    if (winnerNames[i]['number_of_matched'] == 3 ) {
+                        addedWinner.textContent = winnerNames[i]['name'];
+                        three.append(addedWinner);
+                    } else if (winnerNames[i]['number_of_matched'] == 4) {
+                        addedWinner.textContent = winnerNames[i]['name'];
+                        four.append(addedWinner);
+                    } else if (winnerNames[i]['number_of_matched'] == 5) {
+                        addedWinner.textContent = winnerNames[i]['name'];
+                        five.append(addedWinner);
+                    } else if (winnerNames[i]['number_of_matched'] == 6) {
+                        addedWinner.textContent = winnerNames[i]['name'];
+                        six.append(addedWinner);
+                    }
+                }
+            }
+        })
+    </script>
+</html> 

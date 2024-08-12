@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Minute Lotto</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Krub:wght@700&family=Lato:wght@300&display=swap&family=Koulen&display=swap&family=Barlow+Condensed:wght@200;300&family=Koulen&display=swap');
+
+            * {
+                box-sizing: border-box;
+            }
+
+            main {
+                overflow: hidden;
+            }
+
+            body {
+                margin:0;
+                background-color: rgba(3, 27, 62, 1);
+                padding-bottom: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            header {
+                width: 100%;
+                display: flex;
+                background-color: rgba(0, 67, 130, 1);
+                box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+                border-radius: 0px 0px 0px 100px;
+                gap: 0px;
+                opacity: 0px;
+                padding-left: 7%;
+            }
+            
+            .lotto-img {
+                /* float: right; */
+                position: absolute;
+                width: 55%;
+                height: 30vw; 
+                margin-top: 6%;
+                right: 0%;
+                z-index: -1;
+                background-image: url("./831df4b5-fc9f-4386-bf61-ad8c6c1271b9-removebg-preview.png");
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+            }
+
+            .lato-light {
+                font-family: "Lato", sans-serif;
+                font-weight: 300;
+                font-style: normal;
+                padding-top: .2vh;
+                padding-bottom: .1vh;
+                color: rgba(224, 224, 224, 1);
+                font-size: .4vw;
+                font-weight: 300;
+                line-height: 10px;
+                letter-spacing: 1vw;
+            }
+
+            .minute-font {
+                font-family: "Krub", sans-serif;
+                font-size: 4vw;
+                font-weight: 700;
+                font-style: normal;
+                color: rgba(0, 50, 124, 1);
+                -webkit-text-stroke-width: .1vw;
+                -webkit-text-stroke-color: rgba(0, 255, 240, 1);
+            } 
+
+            .lotto-font {
+                font-family: "Krub", sans-serif;
+                font-size: 3vw;
+                font-weight: 700;
+                letter-spacing: 0.2em;
+                color: rgba(176, 138, 2, 1);
+                -webkit-text-stroke-width: .1vw;
+                -webkit-text-stroke-color: rgba(250, 255, 0, 1);
+                margin-top: 2%;
+                margin-left: -6vw;               
+            }
+
+            .yellow-text {
+                font-family: "Koulen", sans-serif;
+                font-size: 2vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(226, 187, 48, 1);
+                margin-top: 8.5%;
+                margin-left: 7%;
+                line-height: 100%;
+            }
+
+            .white-text {
+                font-family: "Koulen", sans-serif;
+                font-size: 3.5vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(255, 255, 255, 1);
+                margin-left: 7%;
+                line-height: 100%;
+            }
+
+            .thinner-text {
+                width: 30%;
+                font-family: "Barlow Condensed", sans-serif;
+                font-size: 1.8vw;
+                font-weight: 200;
+                font-style: normal;
+                color: rgba(255, 255, 255, 1);
+                margin-left: 7%;
+                padding-top: .5%;
+                padding-bottom: 2%;
+            }
+
+            .start-button {
+                font-family: "Koulen", sans-serif;
+                font-size: 1.5vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(0, 45, 86, 1);
+                background-color: rgba(226, 187, 48, 1);
+                border: none;
+                border-radius: 30px;
+                padding: 0% 2%;
+                margin-left: 7%;
+                margin-bottom: 5%;
+                cursor: pointer;
+            }
+
+            .start-button:hover {
+                box-shadow: 0px 4px 50px 0px rgba(250, 255, 0, 0.5);
+            }
+                
+            header img {
+                position: absolute;
+                width: 60%; 
+                height: 60vh; 
+                margin-top: 6%;
+                right: 0%;
+                gap: 0px;
+                opacity: 0px;
+            }
+
+            .boxes-template {
+                display: flex;
+                justify-content: space-around;
+                width: 100%;
+                padding-left: 5%;
+                padding-right: 5%;
+                padding-bottom: 1%;
+                overflow: hidden;
+            }
+
+            .overlap_color{
+                position: absolute;
+                width: 100%;
+                height: 13vw;
+                background-color: rgba(0, 45, 86, 1);
+                z-index: -1;
+                margin-top: 8%;
+            }
+            
+            .square-box {
+                width:25vw;
+                background-color: rgba(46, 111, 171, 1);
+                box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.55) inset;
+            }
+
+            .outside-circle {
+                display: flex;
+                justify-content: center;
+                border-radius: 500px;
+                width: 26%;
+                height: 33%;
+                color: rgba(46, 111, 171, 1);
+                border: 3px solid rgba(2, 121, 231, 1);
+                box-shadow: 0px 4px 40px 0px rgba(0, 255, 240, 1);
+                padding: 1% 1%;
+            }
+
+            .outside-circle-yellow {
+                display: flex;
+                justify-content: center;
+                border-radius: 500px;
+                width: 26%;
+                height: 33%;
+                color: rgba(46, 111, 171, 1);
+                border: 3px solid rgba(226, 187, 48, 1);
+                box-shadow: 0px 4px 40px 0px rgba(250, 255, 0, 0.5);
+                padding: 1% 1%;
+            }
+
+            .outside-circle-dark-blue {
+                display: flex;
+                justify-content: center;
+                border-radius: 500px;
+                width: 26%;
+                height: 33%;
+                color: rgba(46, 111, 171, 1);
+                border: 3px solid rgba(1, 42, 80, 1);
+                box-shadow: 0px 4px 40px 0px rgba(0, 130, 249, 1);
+                padding: 1% 1%;
+            }
+
+            .circle-game-name {
+                width: 100%;
+                height: 5.5vw;
+                border-radius: 500px;
+                background-color: rgba(46, 111, 171, 1);
+                border: 1px solid rgba(0, 0, 0, 1);
+                box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.25) inset;
+                padding-top: 12%;
+                padding-left: 8%;
+            }
+
+            .number-text-white {
+                height: 100%;
+                font-family: "Koulen", sans-serif;
+                font-size: 3.3vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(255, 255, 255, 1); 
+                
+            }
+            
+            .six-text-white {
+                line-height: 100%;
+                font-family: "Koulen", sans-serif;
+                font-size: 3.5vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(255, 255, 255, 1); 
+            }
+
+            .smaller_balls-yellow {
+                width: 15%;
+                height: 100%;
+                border-radius: 500px;
+                background: rgba(226, 187, 48, 1);
+                box-shadow: 0px 4px 5px 0px rgba(250, 255, 0, 1) inset;
+                margin-top: 2%;
+            }
+
+            .smaller_balls-darkblue {
+                width: 15%;
+                height: 100%;
+                border-radius: 500px;
+                background: rgba(0, 62, 106, 1);
+                box-shadow: 0px 4px 5px 0px rgba(0, 130, 249, 1) inset;
+                margin-top: 2%;
+            }
+
+            .slash-font {
+                line-height: 100%;
+                font-family: "Koulen", sans-serif;
+                font-size: 3.8vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(7, 11, 121, 1);
+            }
+
+            .slash-font-yellow {
+                line-height: 100%;
+                font-family: "Koulen", sans-serif;
+                font-size: 3.8vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(226, 187, 48, 1);
+            }
+
+            .slash-font-darkblue {
+                line-height: 100%;
+                font-family: "Koulen", sans-serif;
+                font-size: 3.8vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(0, 35, 86, 1);
+            }
+
+            .number-text {
+                height: 100%;
+                font-family: "Koulen", sans-serif;
+                font-size: 2.2vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(7, 11, 121, 1);
+            }
+
+            .number-text-yellow {
+                height: 100%;
+                font-family: "Koulen", sans-serif;
+                font-size: 2.2vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(226, 187, 48, 1);
+            }
+
+            .number-text-darkblue {
+                height: 100%;
+                font-family: "Koulen", sans-serif;
+                font-size: 2.2vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(0, 35, 86, 1);
+            }
+
+            .smaller_balls {
+                width: 15%;
+                height: 100%;
+                border-radius: 500px;
+                background: rgba(8, 97, 161, 1);
+                box-shadow: 0px 5px 5px 0px rgba(0, 240, 255, 1) inset;
+                margin-top: 2%;
+            }
+
+            .smaller-number-text-white {
+                font-family: "Koulen", sans-serif;
+                font-size: 2.5vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(255, 255, 255, 1);
+                line-height: 141%;
+                padding-top: 2%;
+            }
+
+            .smaller-number-text-yellow2{
+                font-family: "Koulen", sans-serif;
+                font-size: 2.5vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(0, 35, 86, 1);
+                line-height: 141%;
+            }
+
+            .smaller-number-text-yellow {
+                font-family: "Koulen", sans-serif;
+                font-size: 2.3vw;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(255, 199, 0, 1);
+                -webkit-text-stroke-width: .2vw;
+                -webkit-text-stroke-color: rgba(0, 0, 0, 0.45);
+                margin-left: 1%;
+                line-height: 100%;
+            }
+
+            .date-template {
+                display: flex;
+                justify-content: space-between;
+                width:25vw;
+                height: 3.5vh;
+                padding-left: 1%;
+                padding-right: 1%;
+            }
+
+            .small-date-font, .jackpot-font {
+                font-size: 1.2vw;
+                font-family: "Koulen", sans-serif;
+                font-weight: 400;
+                font-style: normal;
+            }
+
+            .previous-draw-balls {
+                display: flex;
+                justify-content: space-around;
+                width: 25vw;
+                height:20%;
+                margin-bottom: 6%;
+            }
+
+            .background-color {
+                position: absolute;
+                width: 100%;
+                height: 16vh;
+                bottom: 0%;
+                background-color: rgba(0, 45, 86, 1);
+            }
+
+            .center {
+                display: flex;
+                justify-content: center;
+            }
+
+            .center-gameName {
+                display: flex; 
+                justify-content:center;
+                margin-top: 4%;
+                margin-bottom: 2%;
+
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            @media screen and (min-width: 481px) and (max-width: 874px){
+                header {
+                    justify-content: center;
+                    padding-left: 0%;
+                }
+
+                .lotto-img {
+                    width: 60%; 
+                    height: 60vw; 
+                    background-image: url("./831df4b5-fc9f-4386-bf61-ad8c6c1271b9-removebg-preview.png");
+                }
+
+                .lato-light {
+                    font-size: 1vw;
+                }
+
+                .minute-font {
+                    font-size: 6.5vw;
+                } 
+    
+                .lotto-font {
+                    font-size: 5vw;
+                    margin-top: 3%;
+                    margin-left: -9vw;               
+                }
+
+                .yellow-text {
+                    font-size: 3.8vw;
+                    margin-top: 16%;
+                    margin-top: 9%;
+                }
+
+                .white-text {
+                    font-size: 6.3vw;
+                }
+
+                .thinner-text {
+                    width: 40%;
+                    font-size: 3.3vw;
+                    padding-bottom: 5%;
+                }
+
+                .start-button {
+                    font-size: 2.5vw;
+                    padding: 0% 6%;
+                    margin-bottom: 5%;
+                }
+
+                .square-box {
+                    width:40vw;
+                }
+
+                .overlap_color{
+                    height: 40vw;
+                    margin-top: 29%;
+                }
+
+                .outside-circle, .outside-circle-yellow, .outside-circle-dark-blue {
+                    width: 40%;
+                    border-radius: 50%;
+                }
+
+                .circle-game-name {
+                    height: 12vw;
+                    border-radius: 50%;
+                }
+
+                .six-text-white {
+                    font-size: 9vw;
+                }
+
+                .previous-draw-balls {
+                    width: 40vw;
+                }
+
+                .center-gameName {
+                    margin-top: 5%;
+                    margin-bottom: 4%;
+                }
+
+                .slash-font, .slash-font-yellow, .slash-font-darkblue{
+                    font-size: 9vw;
+                }
+
+                .number-text, .number-text-yellow, .number-text-darkblue {
+                    font-size: 5.5vw;
+                }
+                
+                .smaller_balls, .smaller_balls-yellow, .smaller_balls-darkblue{
+                    width: 14%;
+                    margin-top: 2%;
+                }
+
+                .smaller-number-text-white {
+                    font-size: 4vw;
+                    padding-top: 2%;
+                }
+
+                .smaller-number-text-yellow2 {
+                    font-size: 4vw;
+                }
+
+                .smaller-number-text-yellow {
+                    font-size: 4.5vw;
+                }
+
+                .date-template {
+                    width: 40vw;
+                    height: 3.5vh;
+                }
+
+                .small-date-font, .jackpot-font {
+                    font-size: 2vw;
+                }
+
+                #square1 {
+                    margin-right: -2%;
+                }
+
+                #square2 {
+                    margin-right: 13%;
+                }
+
+                #square3 {
+                    margin-right: 16%;
+                   
+                }
+
+                @keyframes slider {
+                    0% {
+                        left:0;
+                    }
+                    25% {
+                        left:0;
+                    }
+                    60% {
+                        left:-90%;
+                    }
+                    80% {
+                        left:-90%;
+                    }
+                    100% {
+                        left: -200%
+                    }
+                }
+
+                .boxes-template {
+                    width: 200%;
+                    position: relative;
+                    animation: 8s slider infinite;
+                }
+
+                
+            }
+
+            @media screen and (max-width: 480px){
+                header {
+                    justify-content: center;
+                    padding-left: 0%;
+                }
+
+                .lotto-img {
+                    width: 60%; 
+                    height: 60vw; 
+                    background-image: url("./lottery-balls-on-white-background-260nw-793001734-removebg-preview\ 1\ \(2\).png");
+                }
+
+                .minute-font {
+                    font-size: 6vw;
+                } 
+    
+                .lotto-font {
+                    font-size: 4.5vw;
+                    margin-top: 3%;
+                    margin-left: -9vw;               
+                }
+
+                .lato-light {
+                    font-size: 1vw;
+                }
+
+                .yellow-text {
+                    font-size: 3.8vw;
+                    margin-top: 15%;
+                }
+
+                .white-text {
+                    font-size: 7vw;
+                }
+
+                .thinner-text {
+                    width: 50%;
+                    font-size: 3.5vw;
+                    padding-bottom: 5%;
+                }
+
+                .start-button {
+                    font-size: 3vw;
+                    border-radius: 30px;
+                    padding: 0% 4%;
+                    cursor: pointer;
+                    margin-bottom: 6.5%;
+                }
+
+                .square-box {
+                    width:80vw;
+                }
+
+                #square1 {
+                    margin-right: 3%;
+                }
+
+                #square2 {
+                    margin-right: 8%;
+                }
+
+                #square3 {
+                    margin-left: -5%;
+                }
+
+                @keyframes slider {
+                    0% {
+                        left:0;
+                    }
+                    25% {
+                        left:0;
+                    }
+                    50% {
+                        left:-100%;
+                    }
+                    60% {
+                        left:-100%;
+                    }
+                    80% {
+                        left: -200%;
+                    }
+                    90% {
+                        left: -200%;
+                    }
+                    100% {
+                        left: -300%
+                    }
+                }
+
+
+                .boxes-template {
+                    width: 300%;
+                    position: relative;
+                    animation: 10s slider infinite;
+                }
+
+
+                .overlap_color{
+                    height: 40vw;
+                    margin-top: 29%;
+                }
+
+                .outside-circle, .outside-circle-yellow, .outside-circle-dark-blue {
+                    width: 30%;
+                    border-radius: 50%;
+                }
+
+                .circle-game-name {
+                    height: 18vw;
+                    border-radius: 50%;
+                }
+
+                .six-text-white {
+                    font-size: 12vw;
+                    margin-left: 3%;
+                }
+
+                .previous-draw-balls {
+                    width: 80vw;
+                }
+
+                .center-gameName {
+                    margin-top: 5%;
+                    margin-bottom: 4%;
+                }
+
+                .slash-font, .slash-font-yellow, .slash-font-darkblue{
+                    font-size: 13vw;
+                }
+
+                .number-text, .number-text-yellow, .number-text-darkblue {
+                    font-size: 8vw;
+                }
+                
+                .smaller_balls, .smaller_balls-yellow, .smaller_balls-darkblue{
+                    width: 15%;
+                    margin-top: 2%;
+                }
+
+                .smaller-number-text-white {
+                    font-size: 8vw;
+                    padding-top: 2%;
+                }
+
+                .smaller-number-text-yellow2 {
+                    font-size: 8vw;
+                }
+
+                .smaller-number-text-yellow {
+                    font-size: 7.5vw;
+                }
+
+                .date-template {
+                    width: 80vw;
+                    height: 3.5vh;
+                }
+
+                .small-date-font, .jackpot-font {
+                    font-size: 4vw;
+                }
+            }
+        </style>   
+    
+    </head>
+
+    <body>
+        <div class="center">
+            <span class="lato-light">
+               FOR EDUCATIONAL PURPOSES ONLY
+            </span>
+        </div>
+
+        <header>
+
+            <a href="./main.html">
+                <span class="minute-font">
+                    MINUTE
+                </span>
+            </a>
+
+            <span class="lotto-font">
+                LOTTO
+            </span>
+            
+            <div class="lotto-img"></div>
+
+        </header>
+
+        <main>
+            <div class="yellow-text">
+                A GAME OF CHANCE PER MINUTE
+            </div>
+
+            <div class="white-text">
+                PLAY WITHIN YOUR LIMITS
+            </div>
+
+            <div class="thinner-text">
+                "Minute Lotto: Where every minute counts towards your jackpot dreams!"
+            </div>
+
+            <a href="./game_options.html">
+                <button class="start-button"> GET STARTED</button>
+            </a>    
+
+            <div class="boxes-template">
+                <div class="overlap_color"></div>
+
+                <div class="square-box" id="square1">
+                    <div class="center" style="display: block;">
+                        <div class="center-gameName">
+                            <div class="outside-circle">
+                                <div class="circle-game-name">  
+                                    <span class="six-text-white">
+                                        6<span class="slash-font">/</span><span class="number-text">45</span>
+                                    </span>
+                                </div>
+                            </div>
+                       </div>
+
+                        <div class="previous-draw-balls"> 
+                            <div class="smaller_balls">
+                                <div class="center">
+                                    <span class="smaller-number-text-white">
+                                        12
+                                    </span>
+                                </div>
+                            </div>
+    
+                            <div class="smaller_balls">
+                                <div class="center">
+                                    <span class="smaller-number-text-white">
+                                        45
+                                    </span>
+                                </div>      
+                            </div>
+    
+                            <div class="smaller_balls">
+                                <div class="center">
+                                    <span class="smaller-number-text-white">
+                                        06
+                                    </span>
+                                </div>
+                            </div>
+    
+                            <div class="smaller_balls">
+                                <div class="center">
+                                    <span class="smaller-number-text-white">
+                                        24
+                                    </span>
+                                </div>
+                            </div>
+    
+                            <div class="smaller_balls">
+                                <div class="center">
+                                    <span class="smaller-number-text-white">
+                                        34
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="smaller_balls">
+                                <div class="center">
+                                    <span class="smaller-number-text-white">
+                                        41
+                                    </span>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+
+                    <div class="smaller-number-text-yellow">
+                        ₱ 15,549,234.00
+                    </div>
+
+                    <div class="date-template">
+                        <span class="jackpot-font">
+                            JACKPOT
+                        </span>
+
+                        <span class="small-date-font ">
+                            April 13,2024
+                        </span>
+                    </div> 
+                </div>
+            
+                <div class="square-box" id="square2">
+                    <div class="center" style="display: block;">
+                        <div class="center-gameName">
+                            <div class="outside-circle-yellow ">
+                                <div class="circle-game-name">
+                                    <span class="six-text-white">
+                                        6<span class="slash-font-yellow">/</span><span class="number-text-yellow">49</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="previous-draw-balls">
+                            <div class="smaller_balls-yellow">
+                                <div class="center">
+                                    <span class="smaller-number-text-yellow2">
+                                        07
+                                    </span>
+                                </div>
+                            </div>
+    
+                            <div class="smaller_balls-yellow">
+                                <div class="center">
+                                    <span class="smaller-number-text-yellow2">
+                                        17
+                                    </span>
+                                </div>      
+                            </div>
+    
+                            <div class="smaller_balls-yellow">
+                                <div class="center">
+                                    <span class="smaller-number-text-yellow2">
+                                        21
+                                    </span>
+                                </div>
+                            </div>
+    
+                            <div class="smaller_balls-yellow">
+                                <div class="center">
+                                    <span class="smaller-number-text-yellow2">
+                                        19
+                                    </span>
+                                </div>
+                            </div>
+    
+                            <div class="smaller_balls-yellow">
+                                <div class="center">
+                                    <span class="smaller-number-text-yellow2">
+                                        26
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="smaller_balls-yellow">
+                                <div class="center">
+                                    <span class="smaller-number-text-yellow2">
+                                        02
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="smaller-number-text-yellow">
+                        ₱ 505,239,945.00
+                    </div>
+
+                    <div class="date-template">
+                        <span class="jackpot-font">
+                            JACKPOT
+                        </span>
+
+                        <span class="small-date-font ">
+                            April 13,2024
+                        </span>
+                    </div> 
+                </div>
+
+                <div class="square-box" id="square3">
+                    <div class="center" style="display: block;">
+                        <div class="center-gameName">
+                            <div class="outside-circle-dark-blue">
+                                <div class="circle-game-name">
+                                    <span class="six-text-white">
+                                        6<span class="slash-font-darkblue">/</span><span class="number-text-darkblue">42</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="previous-draw-balls">
+                            <div class="smaller_balls-darkblue">
+                                <div class="center">
+                                    <span class="smaller-number-text-white">
+                                        09
+                                    </span>
+                                </div>
+                            </div>
+    
+                            <div class="smaller_balls-darkblue">
+                                <div class="center">
+                                    <span class="smaller-number-text-white">
+                                        26
+                                    </span>
+                                </div>      
+                            </div>
+    
+                            <div class="smaller_balls-darkblue">
+                                <div class="center">
+                                    <span class="smaller-number-text-white">
+                                        13
+                                    </span>
+                                </div>
+                            </div>
+    
+                            <div class="smaller_balls-darkblue">
+                                <div class="center">
+                                    <span class="smaller-number-text-white">
+                                        18
+                                    </span>
+                                </div>
+                            </div>
+    
+                            <div class="smaller_balls-darkblue">
+                                <div class="center">
+                                    <span class="smaller-number-text-white">
+                                        35
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="smaller_balls-darkblue">
+                                <div class="center">
+                                    <span class="smaller-number-text-white">
+                                        01
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="smaller-number-text-yellow">
+                        ₱ 4,637,853.00
+                    </div>
+
+                    <div class="date-template">
+                        <span class="jackpot-font">
+                            JACKPOT
+                        </span>
+
+                        <span class="small-date-font ">
+                            April 13,2024
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div>
+            
+        </div>
+
+        </div>
+    </body>
+</html>

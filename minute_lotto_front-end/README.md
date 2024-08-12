@@ -1,0 +1,1 @@
+The design of this website is not mine. I only did the front-end of the design provided to me. This website does not have a back-end as well. 
